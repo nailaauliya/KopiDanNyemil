@@ -1,5 +1,6 @@
 package lat.pam.kopidannyemil.navigation
 
+import android.net.Uri
 import androidx.activity.compose.BackHandler
 import androidx.compose.runtime.*
 import lat.pam.kopidannyemil.model.dummyProducts
@@ -8,7 +9,7 @@ import lat.pam.kopidannyemil.screens.*
 @Composable
 fun AppNavigation() {
 
-    // HALAMAN AKTIF
+    // NAVIGASI
     var currentScreen by remember {
         mutableStateOf("welcome")
     }
@@ -28,6 +29,11 @@ fun AppNavigation() {
 
     var loggedInName by remember {
         mutableStateOf("")
+    }
+
+    // FOTO PROFIL PENGGUNA
+    var profilePhotoUri by remember {
+        mutableStateOf<Uri?>(null)
     }
 
     // KERANJANG BELANJA
@@ -87,19 +93,12 @@ fun AppNavigation() {
     // TOMBOL BACK ANDROID
     BackHandler(enabled = currentScreen != "welcome") {
         currentScreen = when (currentScreen) {
-
             "signup" -> "welcome"
-
             "login", "register" -> "signup"
-
             "home" -> "signup"
-
             "profile", "cart" -> "home"
-
             "order" -> "cart"
-
             "confirmation" -> "confirmation"
-
             else -> "welcome"
         }
     }
@@ -155,6 +154,7 @@ fun AppNavigation() {
                 registeredName = name
                 registeredUsername = username
                 registeredPassword = password
+                profilePhotoUri = null
                 currentScreen = "login"
             }
         )
@@ -166,7 +166,6 @@ fun AppNavigation() {
             onAdd = addProduct,
             onRemove = removeProduct,
             onOrder = {
-                // SELALU BUKA KERANJANG
                 currentScreen = "cart"
             },
             onProfile = {
@@ -178,6 +177,10 @@ fun AppNavigation() {
         "profile" -> ProfileScreen(
             name = loggedInName,
             username = registeredUsername,
+            photoUri = profilePhotoUri,
+            onPhotoChange = { uri ->
+                profilePhotoUri = uri
+            },
             onSave = { newName ->
                 loggedInName = newName
                 registeredName = newName
@@ -188,6 +191,7 @@ fun AppNavigation() {
             onLogout = {
                 loggedInName = ""
                 quantities.clear()
+                profilePhotoUri = null
                 currentScreen = "signup"
             }
         )
@@ -219,15 +223,12 @@ fun AppNavigation() {
                           newPhone,
                           newAddress,
                           newNotes ->
-
                 recipient = newRecipient
                 phone = newPhone
                 address = newAddress
                 notes = newNotes
-
                 confirmedItems = totalItems
                 confirmedPrice = totalPrice
-
                 currentScreen = "confirmation"
             }
         )
@@ -241,7 +242,6 @@ fun AppNavigation() {
                 quantities.clear()
                 confirmedItems = 0
                 confirmedPrice = 0
-
                 currentScreen = "home"
             }
         )
