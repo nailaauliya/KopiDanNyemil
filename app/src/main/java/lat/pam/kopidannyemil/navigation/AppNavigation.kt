@@ -95,7 +95,7 @@ fun AppNavigation() {
         currentScreen = when (currentScreen) {
             "signup" -> "welcome"
             "login", "register" -> "signup"
-            "home" -> "signup"
+            "home" -> "home"
             "profile", "cart" -> "home"
             "order" -> "cart"
             "confirmation" -> "confirmation"
