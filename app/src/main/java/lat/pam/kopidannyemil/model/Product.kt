@@ -104,5 +104,24 @@ val dummyProducts = listOf(
         price = 35000,
         image = R.drawable.blueberry_cheesecake,
         description = "Cheesecake lembut dengan blueberry"
+    ),
+
+    Product(
+        id = 11,
+        name = "Dimsum",
+        category = "Camilan",
+        price = 20000,
+        image = R.drawable.dimsum,
+        description = "Dimsum ayam lembut dengan saus pilihan"
+    ),
+
+    Product(
+        id = 12,
+        name = "Cireng",
+        category = "Camilan",
+        price = 15000,
+        image = R.drawable.cireng,
+        description = "Cireng renyah dengan sambal rujak"
     )
+
 )
