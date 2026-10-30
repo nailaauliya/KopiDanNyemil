@@ -29,9 +29,7 @@ private fun hargaRupiah(price: Int): String {
     return "Rp " + "%,d".format(price).replace(',', '.')
 }
 
-// ========================================
 // HALAMAN KERANJANG
-// ========================================
 
 @Composable
 fun KeranjangScreen(
@@ -241,9 +239,7 @@ fun KeranjangScreen(
     }
 }
 
-// ========================================
 // KARTU PRODUK KERANJANG
-// ========================================
 
 @Composable
 private fun KeranjangProductCard(
@@ -331,9 +327,7 @@ private fun KeranjangProductCard(
     }
 }
 
-// ========================================
 // TOMBOL JUMLAH PRODUK
-// ========================================
 
 @Composable
 private fun ButtonJumlah(
@@ -366,9 +360,7 @@ private fun ButtonJumlah(
     }
 }
 
-// ========================================
 // PREVIEW
-// ========================================
 
 @Preview(
     name = "Keranjang Pesanan",

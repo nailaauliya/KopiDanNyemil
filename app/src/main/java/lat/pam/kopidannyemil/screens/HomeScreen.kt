@@ -37,9 +37,7 @@ private fun formatRupiah(price: Int): String {
     return "Rp " + "%,d".format(price).replace(',', '.')
 }
 
-// ========================================
 // HOME SCREEN
-// ========================================
 
 @Composable
 fun HomeScreen(
@@ -94,9 +92,7 @@ fun HomeScreen(
             .background(Cream)
     ) {
 
-        // ========================================
         // HEADER
-        // ========================================
 
         Row(
             modifier = Modifier
@@ -158,9 +154,7 @@ fun HomeScreen(
             }
         }
 
-        // ========================================
         // PENCARIAN
-        // ========================================
 
         OutlinedTextField(
             value = search,
@@ -195,9 +189,7 @@ fun HomeScreen(
 
         Spacer(modifier = Modifier.height(18.dp))
 
-        // ========================================
         // BANNER FOTO KOPI
-        // ========================================
 
         Box(
             modifier = Modifier
@@ -264,9 +256,7 @@ fun HomeScreen(
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        // ========================================
         // KATEGORI
-        // ========================================
 
         Row(
             modifier = Modifier
@@ -312,9 +302,7 @@ fun HomeScreen(
 
         Spacer(modifier = Modifier.height(22.dp))
 
-        // ========================================
         // JUDUL MENU
-        // ========================================
 
         Row(
             modifier = Modifier
@@ -339,9 +327,7 @@ fun HomeScreen(
 
         Spacer(modifier = Modifier.height(14.dp))
 
-        // ========================================
         // DAFTAR PRODUK - SATU BARIS PER PRODUK
-        // ========================================
 
         if (filteredProducts.isEmpty()) {
 
@@ -388,9 +374,7 @@ fun HomeScreen(
             }
         }
 
-        // ========================================
         // RINGKASAN KERANJANG
-        // ========================================
 
         if (totalItems > 0) {
 
@@ -441,9 +425,7 @@ fun HomeScreen(
             }
         }
 
-        // ========================================
         // BOTTOM NAVIGATION
-        // ========================================
 
         HorizontalDivider(
             color = Color(0xFFEDE5DB)
@@ -486,9 +468,7 @@ fun HomeScreen(
     }
 }
 
-// ========================================
 // KARTU PRODUK HORIZONTAL
-// ========================================
 
 @Composable
 private fun CoffeeProductCard(
@@ -628,9 +608,7 @@ private fun CoffeeProductCard(
     }
 }
 
-// ========================================
 // BOTTOM NAVIGATION ITEM
-// ========================================
 
 @Composable
 private fun CoffeeNavItem(
@@ -681,9 +659,7 @@ private fun CoffeeNavItem(
     }
 }
 
-// ========================================
 // PREVIEW HOME
-// ========================================
 
 @Preview(
     name = "05 - Home",

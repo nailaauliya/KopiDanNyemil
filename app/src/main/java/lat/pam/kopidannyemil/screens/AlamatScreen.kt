@@ -62,9 +62,7 @@ fun AlamatScreen(
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        // ========================================
         // HEADER
-        // ========================================
 
         Row(
             verticalAlignment = Alignment.CenterVertically
@@ -106,9 +104,7 @@ fun AlamatScreen(
 
         Spacer(modifier = Modifier.height(28.dp))
 
-        // ========================================
         // NAMA PENERIMA
-        // ========================================
 
         CoffeeTextField(
             label = "Nama Penerima",
@@ -164,9 +160,7 @@ fun AlamatScreen(
 
         Spacer(modifier = Modifier.height(18.dp))
 
-        // ========================================
         // ALAMAT LENGKAP
-        // ========================================
 
         Text(
             text = "Alamat Lengkap",
@@ -205,9 +199,7 @@ fun AlamatScreen(
 
         Spacer(modifier = Modifier.height(18.dp))
 
-        // ========================================
         // CATATAN TAMBAHAN
-        // ========================================
 
         Text(
             text = "Catatan Tambahan (Opsional)",
@@ -245,9 +237,7 @@ fun AlamatScreen(
 
         Spacer(modifier = Modifier.height(26.dp))
 
-        // ========================================
         // RINGKASAN PESANAN
-        // ========================================
 
         Column(
             modifier = Modifier
@@ -287,9 +277,7 @@ fun AlamatScreen(
             }
         }
 
-        // ========================================
         // PESAN VALIDASI
-        // ========================================
 
         if (error.isNotEmpty()) {
             Spacer(modifier = Modifier.height(14.dp))
@@ -303,9 +291,7 @@ fun AlamatScreen(
 
         Spacer(modifier = Modifier.height(25.dp))
 
-        // ========================================
         // TOMBOL KONFIRMASI
-        // ========================================
 
         CoffeeButton(
             text = "Konfirmasi Pesanan  →",
@@ -346,9 +332,7 @@ fun AlamatScreen(
     }
 }
 
-// ========================================
 // PREVIEW ALAMAT PENGIRIMAN
-// ========================================
 
 @Preview(
     name = "07 - Alamat Pengiriman",
