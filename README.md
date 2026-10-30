@@ -107,6 +107,7 @@ Setiap menu dilengkapi foto produk, nama, deskripsi singkat, harga, serta tombol
     <th align="center">Home - Tampilan 1</th>
     <th align="center">Home - Tampilan 2</th>
     <th align="center">Home - Tampilan 3</th>
+<th align="center">Home - Tampilan 4</th>
   </tr>
   <tr>
     <td><img src="screenshots/05-home01.png" width="220"></td>
