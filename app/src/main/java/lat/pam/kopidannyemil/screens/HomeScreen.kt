@@ -9,13 +9,21 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.*
+
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -29,15 +37,9 @@ import lat.pam.kopidannyemil.design.*
 import lat.pam.kopidannyemil.model.Product
 import lat.pam.kopidannyemil.model.dummyProducts
 
-// ========================================
-// FORMAT HARGA RUPIAH
-// ========================================
-
 private fun formatRupiah(price: Int): String {
     return "Rp " + "%,d".format(price).replace(',', '.')
 }
-
-// HOME SCREEN
 
 @Composable
 fun HomeScreen(
@@ -63,7 +65,6 @@ fun HomeScreen(
         "Camilan"
     )
 
-    // FILTER PENCARIAN DAN KATEGORI
     val filteredProducts = dummyProducts.filter { product ->
         (selectedCategory == "Semua" ||
                 product.category == selectedCategory) &&
@@ -79,7 +80,6 @@ fun HomeScreen(
                         )
     }
 
-    // TOTAL KERANJANG
     val totalItems = quantities.values.sum()
 
     val totalPrice = dummyProducts.sumOf { product ->
@@ -92,8 +92,7 @@ fun HomeScreen(
             .background(Cream)
     ) {
 
-        // HEADER
-
+        // Header
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -109,14 +108,14 @@ fun HomeScreen(
                 modifier = Modifier.weight(1f)
             ) {
                 Text(
-                    text = "GOOD DAY, COFFEE LOVER",
+                    text = "KOPI DAN NYEMIL",
                     fontSize = 10.sp,
                     letterSpacing = 1.4.sp,
                     fontWeight = FontWeight.SemiBold,
                     color = Caramel
                 )
 
-                Spacer(modifier = Modifier.height(6.dp))
+                Spacer(Modifier.height(6.dp))
 
                 Text(
                     text = "Halo, ${name.substringBefore(" ")}!",
@@ -125,7 +124,7 @@ fun HomeScreen(
                     color = Espresso
                 )
 
-                Spacer(modifier = Modifier.height(3.dp))
+                Spacer(Modifier.height(3.dp))
 
                 Text(
                     text = "Mau nyemil apa hari ini?",
@@ -134,19 +133,16 @@ fun HomeScreen(
                 )
             }
 
-            // TOMBOL PROFIL
             Box(
                 modifier = Modifier
                     .size(48.dp)
                     .clip(CircleShape)
                     .background(Color(0xFFF0E5D8))
-                    .clickable { onProfile() },
+                    .clickable(onClick = onProfile),
                 contentAlignment = Alignment.Center
             ) {
                 Image(
-                    painter = painterResource(
-                        R.drawable.logo_kopi
-                    ),
+                    painter = painterResource(R.drawable.logo_kopi),
                     contentDescription = "Buka Profil",
                     modifier = Modifier.size(40.dp),
                     contentScale = ContentScale.Fit
@@ -154,13 +150,10 @@ fun HomeScreen(
             }
         }
 
-        // PENCARIAN
-
+        // Pencarian
         OutlinedTextField(
             value = search,
-            onValueChange = {
-                search = it
-            },
+            onValueChange = { search = it },
             placeholder = {
                 Text(
                     text = "Cari menu favoritmu...",
@@ -168,10 +161,10 @@ fun HomeScreen(
                 )
             },
             leadingIcon = {
-                Text(
-                    text = "⌕",
-                    fontSize = 26.sp,
-                    color = Espresso
+                Icon(
+                    imageVector = Icons.Filled.Search,
+                    contentDescription = "Cari",
+                    tint = Espresso
                 )
             },
             singleLine = true,
@@ -187,10 +180,9 @@ fun HomeScreen(
             )
         )
 
-        Spacer(modifier = Modifier.height(18.dp))
+        Spacer(Modifier.height(18.dp))
 
-        // BANNER FOTO KOPI
-
+        // Banner
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -199,9 +191,7 @@ fun HomeScreen(
                 .clip(RoundedCornerShape(20.dp))
         ) {
             Image(
-                painter = painterResource(
-                    R.drawable.coffee_signup
-                ),
+                painter = painterResource(R.drawable.coffee_signup),
                 contentDescription = "Banner Kopi dan Nyemil",
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.fillMaxSize()
@@ -227,37 +217,36 @@ fun HomeScreen(
                     .padding(20.dp)
             ) {
                 Text(
-                    text = "YOUR COFFEE MOMENT",
+                    text = "TAKE A COFFEE BREAK",
                     fontSize = 9.sp,
                     letterSpacing = 1.4.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color(0xFFFFD4A5)
                 )
 
-                Spacer(modifier = Modifier.height(10.dp))
+                Spacer(Modifier.height(10.dp))
 
                 Text(
-                    text = "Good coffee,\ngood mood.",
+                    text = "Coffee first,\nsnacks later.",
                     fontSize = 24.sp,
                     lineHeight = 28.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color.White
                 )
 
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(Modifier.height(8.dp))
 
                 Text(
-                    text = "Temukan favoritmu hari ini.",
+                    text = "Pilih kopi dan camilan favoritmu.",
                     fontSize = 11.sp,
                     color = Color.White
                 )
             }
         }
 
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(Modifier.height(20.dp))
 
-        // KATEGORI
-
+        // Kategori menu
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -265,7 +254,6 @@ fun HomeScreen(
             horizontalArrangement = Arrangement.spacedBy(7.dp)
         ) {
             categories.forEach { category ->
-
                 val selected = selectedCategory == category
 
                 Box(
@@ -273,11 +261,8 @@ fun HomeScreen(
                         .weight(1f)
                         .clip(RoundedCornerShape(12.dp))
                         .background(
-                            if (selected) {
-                                Espresso
-                            } else {
-                                Color(0xFFF0E8DE)
-                            }
+                            if (selected) Espresso
+                            else Color(0xFFF0E8DE)
                         )
                         .clickable {
                             selectedCategory = category
@@ -289,21 +274,17 @@ fun HomeScreen(
                         text = category,
                         fontSize = 11.sp,
                         fontWeight = FontWeight.Medium,
-                        color = if (selected) {
-                            Color.White
-                        } else {
-                            Espresso
-                        },
+                        color = if (selected) Color.White
+                        else Espresso,
                         maxLines = 1
                     )
                 }
             }
         }
 
-        Spacer(modifier = Modifier.height(22.dp))
+        Spacer(Modifier.height(22.dp))
 
-        // JUDUL MENU
-
+        // Judul daftar menu
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -325,12 +306,10 @@ fun HomeScreen(
             )
         }
 
-        Spacer(modifier = Modifier.height(14.dp))
+        Spacer(Modifier.height(14.dp))
 
-        // DAFTAR PRODUK - SATU BARIS PER PRODUK
-
+        // Daftar produk
         if (filteredProducts.isEmpty()) {
-
             Box(
                 modifier = Modifier
                     .weight(1f)
@@ -342,9 +321,7 @@ fun HomeScreen(
                     color = MutedBrown
                 )
             }
-
         } else {
-
             LazyColumn(
                 modifier = Modifier.weight(1f),
                 contentPadding = PaddingValues(
@@ -352,32 +329,24 @@ fun HomeScreen(
                     end = 22.dp,
                     bottom = 18.dp
                 ),
-                verticalArrangement =
-                    Arrangement.spacedBy(12.dp)
+                verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 items(
                     items = filteredProducts,
                     key = { it.id }
                 ) { product ->
-
                     CoffeeProductCard(
                         product = product,
                         quantity = quantities[product.id] ?: 0,
-                        onAdd = {
-                            onAdd(product.id)
-                        },
-                        onRemove = {
-                            onRemove(product.id)
-                        }
+                        onAdd = { onAdd(product.id) },
+                        onRemove = { onRemove(product.id) }
                     )
                 }
             }
         }
 
-        // RINGKASAN KERANJANG
-
+        // Ringkasan keranjang
         if (totalItems > 0) {
-
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -389,8 +358,7 @@ fun HomeScreen(
             ) {
                 Row(
                     modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement =
-                        Arrangement.SpaceBetween,
+                    horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Column {
@@ -425,8 +393,7 @@ fun HomeScreen(
             }
         }
 
-        // BOTTOM NAVIGATION
-
+        // Bottom navigation
         HorizontalDivider(
             color = Color(0xFFEDE5DB)
         )
@@ -436,31 +403,29 @@ fun HomeScreen(
                 .fillMaxWidth()
                 .background(Color.White)
                 .padding(
-                    horizontal = 22.dp,
-                    vertical = 11.dp
+                    horizontal = 24.dp,
+                    vertical = 10.dp
                 ),
-            horizontalArrangement =
-                Arrangement.SpaceAround,
+            horizontalArrangement = Arrangement.SpaceAround,
             verticalAlignment = Alignment.CenterVertically
         ) {
-
             CoffeeNavItem(
-                symbol = "⌂",
+                icon = Icons.Filled.Home,
                 label = "Home",
                 selected = true,
                 onClick = {}
             )
 
             CoffeeNavItem(
-                symbol = "▤",
-                label = "Order",
+                icon = Icons.Filled.ShoppingCart,
+                label = "Keranjang",
                 selected = false,
                 onClick = onOrder
             )
 
             CoffeeNavItem(
-                symbol = "◯",
-                label = "Profile",
+                icon = Icons.Filled.Person,
+                label = "Profil",
                 selected = false,
                 onClick = onProfile
             )
@@ -468,8 +433,7 @@ fun HomeScreen(
     }
 }
 
-// KARTU PRODUK HORIZONTAL
-
+// Kartu produk
 @Composable
 private fun CoffeeProductCard(
     product: Product,
@@ -491,15 +455,12 @@ private fun CoffeeProductCard(
             defaultElevation = 1.dp
         )
     ) {
-
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(12.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-
-            // FOTO PRODUK DI KIRI
             Image(
                 painter = painterResource(product.image),
                 contentDescription = product.name,
@@ -509,13 +470,11 @@ private fun CoffeeProductCard(
                     .clip(RoundedCornerShape(13.dp))
             )
 
-            Spacer(modifier = Modifier.width(14.dp))
+            Spacer(Modifier.width(14.dp))
 
-            // INFORMASI PRODUK
             Column(
                 modifier = Modifier.weight(1f)
             ) {
-
                 Text(
                     text = product.name,
                     fontSize = 14.sp,
@@ -525,9 +484,8 @@ private fun CoffeeProductCard(
                     overflow = TextOverflow.Ellipsis
                 )
 
-                Spacer(modifier = Modifier.height(4.dp))
+                Spacer(Modifier.height(4.dp))
 
-                // DESKRIPSI LANGSUNG DARI PRODUCT.KT
                 Text(
                     text = product.description,
                     fontSize = 12.sp,
@@ -537,7 +495,7 @@ private fun CoffeeProductCard(
                     overflow = TextOverflow.Ellipsis
                 )
 
-                Spacer(modifier = Modifier.height(6.dp))
+                Spacer(Modifier.height(6.dp))
 
                 Text(
                     text = formatRupiah(product.price),
@@ -546,23 +504,18 @@ private fun CoffeeProductCard(
                     color = Espresso
                 )
 
-                Spacer(modifier = Modifier.height(10.dp))
+                Spacer(Modifier.height(10.dp))
 
-                // TOMBOL TAMBAH DAN KURANG
                 Row(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-
                     if (quantity > 0) {
-
                         Box(
                             modifier = Modifier
                                 .size(27.dp)
                                 .clip(CircleShape)
                                 .background(Color(0xFFF0E8DE))
-                                .clickable {
-                                    onRemove()
-                                },
+                                .clickable(onClick = onRemove),
                             contentAlignment = Alignment.Center
                         ) {
                             Text(
@@ -573,7 +526,7 @@ private fun CoffeeProductCard(
                             )
                         }
 
-                        Spacer(modifier = Modifier.width(9.dp))
+                        Spacer(Modifier.width(9.dp))
 
                         Text(
                             text = "$quantity",
@@ -582,7 +535,7 @@ private fun CoffeeProductCard(
                             color = Espresso
                         )
 
-                        Spacer(modifier = Modifier.width(9.dp))
+                        Spacer(Modifier.width(9.dp))
                     }
 
                     Box(
@@ -590,9 +543,7 @@ private fun CoffeeProductCard(
                             .size(27.dp)
                             .clip(CircleShape)
                             .background(Espresso)
-                            .clickable {
-                                onAdd()
-                            },
+                            .clickable(onClick = onAdd),
                         contentAlignment = Alignment.Center
                     ) {
                         Text(
@@ -608,11 +559,10 @@ private fun CoffeeProductCard(
     }
 }
 
-// BOTTOM NAVIGATION ITEM
-
+// Item bottom navigation
 @Composable
 private fun CoffeeNavItem(
-    symbol: String,
+    icon: ImageVector,
     label: String,
     selected: Boolean,
     onClick: () -> Unit
@@ -620,46 +570,35 @@ private fun CoffeeNavItem(
     Column(
         modifier = Modifier
             .clip(RoundedCornerShape(12.dp))
-            .clickable {
-                onClick()
-            }
+            .clickable(onClick = onClick)
             .padding(
-                horizontal = 16.dp,
-                vertical = 3.dp
+                horizontal = 14.dp,
+                vertical = 5.dp
             ),
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
     ) {
-
-        Text(
-            text = symbol,
-            fontSize = 24.sp,
-            color = if (selected) {
-                Espresso
-            } else {
-                MutedBrown
-            }
+        Icon(
+            imageVector = icon,
+            contentDescription = label,
+            tint = if (selected) Espresso else MutedBrown,
+            modifier = Modifier.size(23.dp)
         )
 
-        Spacer(modifier = Modifier.height(2.dp))
+        Spacer(Modifier.height(4.dp))
 
         Text(
             text = label,
             fontSize = 11.sp,
             fontWeight = if (selected) {
-                FontWeight.Bold
+                FontWeight.SemiBold
             } else {
                 FontWeight.Normal
             },
-            color = if (selected) {
-                Espresso
-            } else {
-                MutedBrown
-            }
+            color = if (selected) Espresso else MutedBrown
         )
     }
 }
-
-// PREVIEW HOME
 
 @Preview(
     name = "05 - Home",
