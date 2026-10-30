@@ -111,8 +111,8 @@ Setiap menu dilengkapi foto produk, nama, deskripsi singkat, harga, serta tombol
   </tr>
   <tr>
     <td><img src="screenshots/05-home01.png" width="220"></td>
-    <td><img src="screenshots/05-home02.png" width="220"></td>
     <td><img src="screenshots/05-home04.png" width="220"></td>
+    <td><img src="screenshots/05-home02.png" width="220"></td>
 <td><img src="screenshots/05-home03.png" width="220"></td>
   </tr>
 </table>
