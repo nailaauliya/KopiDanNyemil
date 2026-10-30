@@ -149,7 +149,7 @@ fun WelcomeScreen(
                 Spacer(modifier = Modifier.height(12.dp))
 
                 Text(
-                    text = "Kopi enak,\ncerita lebih hangat.",
+                    text = "Good Coffee,\nBetter Moments.",
                     fontSize = 31.sp,
                     lineHeight = 38.sp,
                     fontWeight = FontWeight.Bold,
