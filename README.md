@@ -130,7 +130,7 @@ Pemilihan produk dilakukan menggunakan tombol tambah (+) dan kurang (-). Jumlah 
   </tr>
   <tr>
     <td><img src="screenshots/06-carimenu.png" width="230"></td>
-    <td><img src="screenshots/09-keranjang.png" width="230"></td>
+    <td><img src="screenshots/07-pilihmenu.png" width="230"></td>
   </tr>
 </table>
 
@@ -166,7 +166,7 @@ Halaman Alamat Pengiriman digunakan untuk mengisi informasi penerima, nomor hand
 Halaman ini juga menampilkan ringkasan jumlah produk dan total harga sebelum pesanan dikonfirmasi.
 
 <p align="center">
-  <img src="screenshots/11-alamatmenu.png" width="230">
+  <img src="screenshots/11-alamat.png" width="230">
 </p>
 
 ### 5.7 Konfirmasi Pesanan
