@@ -147,7 +147,7 @@ Pengguna dapat mengubah jumlah produk sebelum melanjutkan ke pengisian alamat pe
   </tr>
   <tr>
     <td><img src="screenshots/08-keranjangkosong.png" width="230"></td>
-    <td><img src="screenshots/12-konfirmasi.png" width="230"></td>
+    <td><img src="screenshots/09-keranjang.png" width="230"></td>
   </tr>
 </table>
 
