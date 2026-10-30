@@ -130,7 +130,7 @@ Pemilihan produk dilakukan menggunakan tombol tambah (+) dan kurang (-). Jumlah 
   </tr>
   <tr>
     <td><img src="screenshots/06-carimenu.png" width="230"></td>
-    <td><img src="screenshots/07-pilihmenu.png" width="230"></td>
+    <td><img src="screenshots/09-keranjang.png" width="230"></td>
   </tr>
 </table>
 
@@ -147,7 +147,7 @@ Pengguna dapat mengubah jumlah produk sebelum melanjutkan ke pengisian alamat pe
   </tr>
   <tr>
     <td><img src="screenshots/08-keranjangkosong.png" width="230"></td>
-    <td><img src="screenshots/09-keranjang.png" width="230"></td>
+    <td><img src="screenshots/12-konfirmasi.png" width="230"></td>
   </tr>
 </table>
 
