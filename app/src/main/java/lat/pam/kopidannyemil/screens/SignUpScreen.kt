@@ -4,8 +4,8 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -38,20 +38,20 @@ fun SignUpScreen(
         modifier = Modifier
             .fillMaxSize()
             .background(Cream)
+            .statusBarsPadding()
             .verticalScroll(rememberScrollState())
             .padding(horizontal = 26.dp)
     ) {
 
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(4.dp))
 
-        // HEADER
+        // Header
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(52.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-
             IconButton(
                 onClick = onBack,
                 modifier = Modifier.size(40.dp)
@@ -76,24 +76,20 @@ fun SignUpScreen(
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        // FOTO KOPI DAN CAMILAN
+        // Foto kopi dan camilan
         Box(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(245.dp)
                 .clip(RoundedCornerShape(22.dp))
         ) {
-
             Image(
-                painter = painterResource(
-                    R.drawable.coffee_signup
-                ),
+                painter = painterResource(R.drawable.coffee_signup),
                 contentDescription = "Kopi dan camilan",
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.fillMaxSize()
             )
 
-            // GRADIENT FOTO
             Box(
                 modifier = Modifier
                     .fillMaxSize()
@@ -121,7 +117,7 @@ fun SignUpScreen(
 
         Spacer(modifier = Modifier.height(28.dp))
 
-        // JUDUL
+        // Judul
         Text(
             text = "Selamat Datang!",
             fontSize = 28.sp,
@@ -131,7 +127,7 @@ fun SignUpScreen(
 
         Spacer(modifier = Modifier.height(10.dp))
 
-        // DESKRIPSI
+        // Deskripsi
         Text(
             text = "Gabung dan temukan berbagai pilihan " +
                     "kopi serta camilan favorit untuk menemani harimu.",
@@ -142,7 +138,7 @@ fun SignUpScreen(
 
         Spacer(modifier = Modifier.height(26.dp))
 
-        // TOMBOL REGISTER
+        // Tombol daftar
         CoffeeButton(
             text = "Daftar Sekarang  →",
             onClick = onRegister
@@ -150,7 +146,7 @@ fun SignUpScreen(
 
         Spacer(modifier = Modifier.height(12.dp))
 
-        // TOMBOL LOGIN
+        // Tombol login
         CoffeeButton(
             text = "Sudah Punya Akun? Masuk",
             onClick = onLogin,
@@ -159,7 +155,7 @@ fun SignUpScreen(
 
         Spacer(modifier = Modifier.height(26.dp))
 
-        // FOOTER
+        // Footer
         Text(
             text = "Made for your coffee moments.",
             modifier = Modifier.fillMaxWidth(),
@@ -171,8 +167,6 @@ fun SignUpScreen(
         Spacer(modifier = Modifier.height(24.dp))
     }
 }
-
-// PREVIEW SIGN UP
 
 @Preview(
     name = "02 - Sign Up",
