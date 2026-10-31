@@ -7,8 +7,8 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Text
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -18,14 +18,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 import lat.pam.kopidannyemil.R
+import lat.pam.kopidannyemil.design.Caramel
 import lat.pam.kopidannyemil.design.Cream
 import lat.pam.kopidannyemil.design.Espresso
-import lat.pam.kopidannyemil.design.Caramel
 import lat.pam.kopidannyemil.design.MutedBrown
 import lat.pam.kopidannyemil.design.White
 
@@ -39,17 +40,15 @@ fun WelcomeScreen(
             .background(Cream)
     ) {
 
-        // FOTO BACKGROUND
+        // Foto background
         Image(
-            painter = painterResource(
-                id = R.drawable.coffee_welcome
-            ),
+            painter = painterResource(R.drawable.coffee_welcome),
             contentDescription = "Foto kopi",
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxSize()
         )
 
-        // GRADIENT FOTO
+        // Gradient foto
         Box(
             modifier = Modifier
                 .fillMaxSize()
@@ -66,60 +65,54 @@ fun WelcomeScreen(
             modifier = Modifier.fillMaxSize()
         ) {
 
-            // HEADER BRAND
-            Row(
+            // Logo dan nama aplikasi di tengah atas
+            Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(
-                        start = 24.dp,
-                        end = 24.dp,
-                        top = 30.dp
-                    ),
-                verticalAlignment = Alignment.CenterVertically
+                    .padding(top = 72.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
 
                 Box(
                     modifier = Modifier
-                        .size(54.dp)
+                        .size(76.dp)
                         .clip(CircleShape)
                         .background(Cream),
                     contentAlignment = Alignment.Center
                 ) {
                     Image(
-                        painter = painterResource(
-                            R.drawable.logo_kopi
-                        ),
+                        painter = painterResource(R.drawable.logo_kopi),
                         contentDescription = "Logo Kopi dan Nyemil",
                         contentScale = ContentScale.Fit,
-                        modifier = Modifier.size(48.dp)
+                        modifier = Modifier.size(68.dp)
                     )
                 }
 
-                Spacer(modifier = Modifier.width(12.dp))
+                Spacer(modifier = Modifier.height(12.dp))
 
-                Column {
-                    Text(
-                        text = "KOPI DAN NYEMIL",
-                        fontSize = 14.sp,
-                        fontWeight = FontWeight.Bold,
-                        letterSpacing = 1.sp,
-                        color = White
-                    )
+                Text(
+                    text = "KOPI DAN NYEMIL",
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold,
+                    letterSpacing = 1.5.sp,
+                    color = White,
+                    textAlign = TextAlign.Center
+                )
 
-                    Spacer(modifier = Modifier.height(3.dp))
+                Spacer(modifier = Modifier.height(5.dp))
 
-                    Text(
-                        text = "COFFEE & BITES",
-                        fontSize = 10.sp,
-                        letterSpacing = 1.8.sp,
-                        color = White.copy(alpha = 0.85f)
-                    )
-                }
+                Text(
+                    text = "COFFEE & BITES",
+                    fontSize = 11.sp,
+                    letterSpacing = 2.sp,
+                    color = White.copy(alpha = 0.90f),
+                    textAlign = TextAlign.Center
+                )
             }
 
             Spacer(modifier = Modifier.weight(1f))
 
-            // PANEL WELCOME
+            // Panel welcome
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -190,7 +183,6 @@ fun WelcomeScreen(
     }
 }
 
-// PREVIEW WELCOME
 @Preview(
     name = "01 - Welcome",
     showBackground = true,
