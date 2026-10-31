@@ -1,6 +1,8 @@
 package lat.pam.kopidannyemil.screens
 
+import android.graphics.BitmapFactory
 import android.net.Uri
+
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
@@ -8,9 +10,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -25,7 +26,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import android.graphics.BitmapFactory
 
 import lat.pam.kopidannyemil.components.CoffeeButton
 import lat.pam.kopidannyemil.components.CoffeeTextField
@@ -51,7 +51,7 @@ fun ProfileScreen(
         mutableStateOf("")
     }
 
-    // BUKA GALERI MENGGUNAKAN PHOTO PICKER
+    // Pilih foto dari galeri
     val photoPicker = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.GetContent()
     ) { uri ->
@@ -60,7 +60,7 @@ fun ProfileScreen(
         }
     }
 
-    // MEMBACA FOTO YANG DIPILIH
+    // Membaca foto yang dipilih
     val photoBitmap = remember(photoUri) {
         photoUri?.let { uri ->
             try {
@@ -77,14 +77,13 @@ fun ProfileScreen(
         modifier = Modifier
             .fillMaxSize()
             .background(Cream)
+            .statusBarsPadding()
             .verticalScroll(rememberScrollState())
             .padding(horizontal = 26.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        Spacer(modifier = Modifier.height(20.dp))
-
-        // HEADER
+        // Header
         Row(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically
@@ -111,12 +110,11 @@ fun ProfileScreen(
 
         Spacer(modifier = Modifier.height(35.dp))
 
-        // FOTO PROFIL + TOMBOL KAMERA
+        // Foto profil
         Box(
             modifier = Modifier.size(124.dp),
             contentAlignment = Alignment.Center
         ) {
-
             Box(
                 modifier = Modifier
                     .size(112.dp)
@@ -127,7 +125,6 @@ fun ProfileScreen(
                     },
                 contentAlignment = Alignment.Center
             ) {
-
                 if (photoBitmap != null) {
                     Image(
                         bitmap = photoBitmap,
@@ -136,7 +133,6 @@ fun ProfileScreen(
                         contentScale = ContentScale.Crop
                     )
                 } else {
-                    // AVATAR DEFAULT SEBELUM MEMILIH FOTO
                     Text(
                         text = name
                             .trim()
@@ -154,7 +150,7 @@ fun ProfileScreen(
                 }
             }
 
-            // IKON KAMERA
+            // Tombol ganti foto
             Box(
                 modifier = Modifier
                     .align(Alignment.BottomEnd)
@@ -207,6 +203,7 @@ fun ProfileScreen(
 
         Spacer(modifier = Modifier.height(25.dp))
 
+        // Informasi profil
         Text(
             text = "Informasi Profil",
             modifier = Modifier.fillMaxWidth(),
@@ -247,6 +244,7 @@ fun ProfileScreen(
 
         Spacer(modifier = Modifier.height(28.dp))
 
+        // Simpan perubahan
         CoffeeButton(
             text = "Simpan Perubahan",
             onClick = {
@@ -275,6 +273,7 @@ fun ProfileScreen(
 
         Spacer(modifier = Modifier.height(18.dp))
 
+        // Logout
         TextButton(onClick = onLogout) {
             Text(
                 text = "Keluar dari Akun",
@@ -298,7 +297,7 @@ fun ProfileScreenPreview() {
     MaterialTheme {
         ProfileScreen(
             name = "Naila Aghna Auliya P",
-            username = "naila.aghn ap".replace(" ", ""),
+            username = "naila.aghnap",
             photoUri = null,
             onPhotoChange = {},
             onSave = {},

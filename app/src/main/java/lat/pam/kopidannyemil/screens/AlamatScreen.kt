@@ -2,6 +2,7 @@ package lat.pam.kopidannyemil.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -56,6 +57,7 @@ fun AlamatScreen(
         modifier = Modifier
             .fillMaxSize()
             .background(Cream)
+            .statusBarsPadding()
             .verticalScroll(rememberScrollState())
             .padding(horizontal = 24.dp)
     ) {

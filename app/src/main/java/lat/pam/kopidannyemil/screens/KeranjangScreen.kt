@@ -29,8 +29,6 @@ private fun hargaRupiah(price: Int): String {
     return "Rp " + "%,d".format(price).replace(',', '.')
 }
 
-// HALAMAN KERANJANG
-
 @Composable
 fun KeranjangScreen(
     quantities: Map<Int, Int>,
@@ -53,16 +51,17 @@ fun KeranjangScreen(
         modifier = Modifier
             .fillMaxSize()
             .background(Cream)
+            .statusBarsPadding()
     ) {
 
-        // HEADER
+        // Header
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(
                     start = 12.dp,
                     end = 24.dp,
-                    top = 16.dp,
+                    top = 4.dp,
                     bottom = 12.dp
                 ),
             verticalAlignment = Alignment.CenterVertically
@@ -91,7 +90,7 @@ fun KeranjangScreen(
 
         if (selectedProducts.isEmpty()) {
 
-            // KERANJANG KOSONG
+            // Keranjang kosong
             Column(
                 modifier = Modifier
                     .weight(1f)
@@ -133,7 +132,7 @@ fun KeranjangScreen(
 
         } else {
 
-            // DAFTAR PRODUK DIPILIH
+            // Daftar produk yang dipilih
             LazyColumn(
                 modifier = Modifier.weight(1f),
                 contentPadding = PaddingValues(
@@ -165,7 +164,7 @@ fun KeranjangScreen(
                 }
             }
 
-            // RINGKASAN PEMBAYARAN
+            // Ringkasan pesanan
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -239,8 +238,6 @@ fun KeranjangScreen(
     }
 }
 
-// KARTU PRODUK KERANJANG
-
 @Composable
 private fun KeranjangProductCard(
     product: Product,
@@ -262,7 +259,6 @@ private fun KeranjangProductCard(
             modifier = Modifier.padding(12.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-
             Image(
                 painter = painterResource(product.image),
                 contentDescription = product.name,
@@ -299,7 +295,6 @@ private fun KeranjangProductCard(
                 Row(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-
                     ButtonJumlah(
                         symbol = "−",
                         filled = false,
@@ -326,8 +321,6 @@ private fun KeranjangProductCard(
         }
     }
 }
-
-// TOMBOL JUMLAH PRODUK
 
 @Composable
 private fun ButtonJumlah(
@@ -359,8 +352,6 @@ private fun ButtonJumlah(
         )
     }
 }
-
-// PREVIEW
 
 @Preview(
     name = "Keranjang Pesanan",
