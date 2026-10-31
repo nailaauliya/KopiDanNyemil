@@ -13,7 +13,7 @@ data class Product(
 
 val dummyProducts = listOf(
 
-    // KATEGORI KOPI
+    // Kategori Kopi
 
     Product(
         id = 1,
@@ -69,7 +69,7 @@ val dummyProducts = listOf(
         description = "Perpaduan alpukat, espresso, dan susu"
     ),
 
-    // KATEGORI NON KOPI
+    // Kategori Non Kopi
 
     Product(
         id = 5,
@@ -107,7 +107,25 @@ val dummyProducts = listOf(
         description = "Minuman blended dengan cookies dan krim"
     ),
 
-    // KATEGORI CAMILAN
+    Product(
+        id = 17,
+        name = "Red Velvet Milkshake",
+        category = "Non Kopi",
+        price = 30000,
+        image = R.drawable.redvelvet_milkshake,
+        description = "Milkshake red velvet yang creamy dan lembut"
+    ),
+
+    Product(
+        id = 18,
+        name = "Mango Pomelo",
+        category = "Non Kopi",
+        price = 29000,
+        image = R.drawable.mango_pomelo,
+        description = "Minuman mangga segar dengan pomelo"
+    ),
+
+    // Kategori Camilan
 
     Product(
         id = 7,

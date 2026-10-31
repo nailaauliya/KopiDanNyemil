@@ -19,7 +19,7 @@ Aplikasi ini dibuat untuk memenuhi tugas Ujian Tengah Semester (UTS) mata kuliah
 
 Melalui aplikasi ini, pengguna dapat melakukan registrasi dan login, melihat daftar menu, mencari produk, memilih jumlah pesanan, mengelola keranjang, mengisi alamat pengiriman, hingga melakukan konfirmasi pesanan.
 
-Aplikasi menyediakan **16 produk** yang terbagi menjadi tiga kategori, yaitu **Kopi, Non Kopi, dan Camilan**. Seluruh data produk masih menggunakan data statis (*dummy data*) tanpa database.
+Aplikasi menyediakan **18 produk** yang terbagi menjadi tiga kategori, yaitu **Kopi, Non Kopi, dan Camilan**. Seluruh data produk masih menggunakan data statis (*dummy data*) tanpa database.
 
 ## 2. Fitur Aplikasi
 
@@ -31,7 +31,7 @@ Aplikasi Kopi dan Nyemil memiliki beberapa fitur utama yang mendukung proses pem
 | 2 | Sign Up | Menyediakan pilihan untuk masuk menggunakan akun yang sudah ada atau melakukan pendaftaran akun baru. |
 | 3 | Register | Memungkinkan pengguna membuat akun dengan mengisi informasi nama, username, dan password. |
 | 4 | Login | Memvalidasi username dan password yang telah didaftarkan sebelum pengguna dapat masuk ke halaman utama. |
-| 5 | Home | Menampilkan 16 pilihan kopi, minuman non-kopi, dan camilan yang dilengkapi gambar, nama, deskripsi, serta harga. |
+| 5 | Home | Menampilkan 18 pilihan kopi, minuman non-kopi, dan camilan yang dilengkapi gambar, nama, deskripsi, serta harga. |
 | 6 | Pencarian Menu | Memudahkan pengguna menemukan produk melalui pencarian berdasarkan nama atau deskripsi. |
 | 7 | Filter Kategori | Menampilkan produk berdasarkan kategori Semua, Kopi, Non Kopi, dan Camilan. |
 | 8 | Pemilihan Produk | Pengguna dapat menambah atau mengurangi jumlah produk melalui tombol (+) dan (-). |
@@ -44,7 +44,7 @@ Aplikasi juga dilengkapi dengan **bottom navigation** untuk memudahkan perpindah
 
 ## 3. Daftar Menu
 
-Terdapat **16 produk** yang tersedia, terdiri dari **6 menu Kopi, 4 menu Non Kopi, dan 6 menu Camilan**.
+Terdapat **18 produk** yang tersedia, terdiri dari **6 menu Kopi, 6 menu Non Kopi, dan 6 menu Camilan**.
 
 | Kategori | Nama Produk | Harga |
 |---|---|---|
@@ -58,6 +58,8 @@ Terdapat **16 produk** yang tersedia, terdiri dari **6 menu Kopi, 4 menu Non Kop
 | | Mocktails | Rp29.000 |
 | | Hot Choco | Rp25.000 |
 | | Cookies n Cream Frappe | Rp30.000 |
+| | Red Velvet Milkshake | Rp30.000 |
+| | Mango Pomelo | Rp29.000 |
 | **Camilan** | Donat Cokelat | Rp16.000 |
 | | Butter Croissant | Rp22.000 |
 | | Choco Cookies | Rp15.000 |
