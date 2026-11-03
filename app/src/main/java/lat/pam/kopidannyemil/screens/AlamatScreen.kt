@@ -4,8 +4,10 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -16,10 +18,12 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-
 import lat.pam.kopidannyemil.components.CoffeeButton
-import lat.pam.kopidannyemil.components.CoffeeTextField
 import lat.pam.kopidannyemil.design.*
+
+private fun formatHargaAlamat(harga: Int): String {
+    return "Rp " + "%,d".format(harga).replace(',', '.')
+}
 
 @Composable
 fun AlamatScreen(
@@ -49,9 +53,6 @@ fun AlamatScreen(
         mutableStateOf("")
     }
 
-    val rupiah = "Rp " +
-            "%,d".format(totalPrice).replace(',', '.')
-
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -60,31 +61,35 @@ fun AlamatScreen(
             .imePadding()
     ) {
 
-        // Header
+        // HEADER
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(
                     start = 12.dp,
-                    end = 24.dp,
+                    end = 20.dp,
                     top = 4.dp,
                     bottom = 4.dp
                 ),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            IconButton(onClick = onBack) {
-                Text(
-                    text = "←",
-                    fontSize = 26.sp,
-                    color = Espresso
+            IconButton(
+                onClick = onBack,
+                modifier = Modifier.size(48.dp)
+            ) {
+                Icon(
+                    imageVector = Icons.Filled.ArrowBack,
+                    contentDescription = "Kembali",
+                    tint = Espresso,
+                    modifier = Modifier.size(24.dp)
                 )
             }
 
-            Spacer(modifier = Modifier.width(4.dp))
+            Spacer(Modifier.width(8.dp))
 
             Text(
                 text = "Alamat Pengiriman",
-                fontSize = 19.sp,
+                fontSize = 21.sp,
                 fontWeight = FontWeight.Bold,
                 color = Espresso
             )
@@ -94,7 +99,7 @@ fun AlamatScreen(
             color = Color(0xFFEAE0D5)
         )
 
-        // Form alamat
+        // KONTEN YANG BISA DI-SCROLL
         Column(
             modifier = Modifier
                 .weight(1f)
@@ -102,201 +107,149 @@ fun AlamatScreen(
                 .verticalScroll(rememberScrollState())
                 .padding(
                     horizontal = 24.dp,
-                    vertical = 12.dp
+                    vertical = 16.dp
                 )
         ) {
-
             Text(
                 text = "Hampir selesai!",
-                fontSize = 25.sp,
+                fontSize = 23.sp,
                 fontWeight = FontWeight.Bold,
                 color = Espresso
             )
 
-            Spacer(modifier = Modifier.height(5.dp))
+            Spacer(Modifier.height(7.dp))
 
             Text(
-                text = "Lengkapi informasi pengiriman untuk " +
-                        "pesanan kopi dan camilanmu.",
+                text = "Lengkapi informasi pengiriman agar pesananmu bisa diproses.",
                 fontSize = 13.sp,
-                lineHeight = 19.sp,
+                lineHeight = 20.sp,
                 color = MutedBrown
             )
 
-            Spacer(modifier = Modifier.height(18.dp))
+            Spacer(Modifier.height(24.dp))
 
-            // Nama penerima
-            CoffeeTextField(
+            AlamatInputField(
                 label = "Nama Penerima",
-                placeholder = "Masukkan nama penerima",
                 value = recipient,
                 onValueChange = {
                     recipient = it
                     error = ""
-                }
+                },
+                placeholder = "Masukkan nama penerima"
             )
 
-            Spacer(modifier = Modifier.height(12.dp))
+            Spacer(Modifier.height(16.dp))
 
-            // Nomor handphone
-            Text(
-                text = "Nomor Handphone",
-                fontSize = 13.sp,
-                fontWeight = FontWeight.SemiBold,
-                color = Espresso
-            )
-
-            Spacer(modifier = Modifier.height(6.dp))
-
-            OutlinedTextField(
+            AlamatInputField(
+                label = "Nomor HP",
                 value = phone,
                 onValueChange = {
-                    phone = it.filter { char ->
-                        char.isDigit()
-                    }.take(15)
-
+                    phone = it
                     error = ""
                 },
-                placeholder = {
-                    Text(
-                        text = "Contoh: 081234567890",
-                        fontSize = 13.sp
-                    )
-                },
-                singleLine = true,
-                keyboardOptions = KeyboardOptions(
-                    keyboardType = KeyboardType.Phone
-                ),
-                modifier = Modifier.fillMaxWidth(),
-                shape = RoundedCornerShape(13.dp),
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = Espresso,
-                    unfocusedBorderColor = Color(0xFFDCCFC2),
-                    focusedContainerColor = FieldColor,
-                    unfocusedContainerColor = FieldColor
-                )
+                placeholder = "Contoh: 081234567890",
+                keyboardType = KeyboardType.Phone
             )
 
-            Spacer(modifier = Modifier.height(12.dp))
+            Spacer(Modifier.height(16.dp))
 
-            // Alamat lengkap
-            Text(
-                text = "Alamat Lengkap",
-                fontSize = 13.sp,
-                fontWeight = FontWeight.SemiBold,
-                color = Espresso
-            )
-
-            Spacer(modifier = Modifier.height(6.dp))
-
-            OutlinedTextField(
+            AlamatInputField(
+                label = "Alamat Lengkap",
                 value = address,
                 onValueChange = {
                     address = it
                     error = ""
                 },
-                placeholder = {
-                    Text(
-                        text = "Jalan, nomor rumah, kecamatan, kota",
-                        fontSize = 13.sp
-                    )
-                },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .heightIn(min = 85.dp),
-                shape = RoundedCornerShape(13.dp),
-                minLines = 2,
-                maxLines = 4,
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = Espresso,
-                    unfocusedBorderColor = Color(0xFFDCCFC2),
-                    focusedContainerColor = FieldColor,
-                    unfocusedContainerColor = FieldColor
-                )
+                placeholder = "Masukkan alamat pengiriman",
+                singleLine = false,
+                minLines = 3
             )
 
-            Spacer(modifier = Modifier.height(12.dp))
+            Spacer(Modifier.height(16.dp))
 
-            // Catatan tambahan
-            Text(
-                text = "Catatan Tambahan (Opsional)",
-                fontSize = 13.sp,
-                fontWeight = FontWeight.SemiBold,
-                color = Espresso
-            )
-
-            Spacer(modifier = Modifier.height(6.dp))
-
-            OutlinedTextField(
+            AlamatInputField(
+                label = "Catatan (Opsional)",
                 value = notes,
                 onValueChange = {
                     notes = it
                 },
-                placeholder = {
-                    Text(
-                        text = "Contoh: Rumah pagar hitam",
-                        fontSize = 13.sp
-                    )
-                },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .heightIn(min = 70.dp),
-                shape = RoundedCornerShape(13.dp),
-                minLines = 2,
-                maxLines = 3,
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = Espresso,
-                    unfocusedBorderColor = Color(0xFFDCCFC2),
-                    focusedContainerColor = FieldColor,
-                    unfocusedContainerColor = FieldColor
-                )
+                placeholder = "Contoh: Rumah pagar hitam",
+                singleLine = false,
+                minLines = 2
             )
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(Modifier.height(24.dp))
 
-            // Ringkasan pesanan
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(
-                        color = Color.White,
-                        shape = RoundedCornerShape(16.dp)
-                    )
-                    .padding(16.dp)
-            ) {
-                Text(
-                    text = "Ringkasan Pesanan",
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Espresso
+            // RINGKASAN PESANAN
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                shape = RoundedCornerShape(18.dp),
+                colors = CardDefaults.cardColors(
+                    containerColor = Color.White
                 )
-
-                Spacer(modifier = Modifier.height(10.dp))
-
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
+            ) {
+                Column(
+                    modifier = Modifier.padding(18.dp)
                 ) {
                     Text(
-                        text = "$totalItems item",
-                        color = MutedBrown,
-                        fontSize = 13.sp
+                        text = "Ringkasan Pesanan",
+                        fontSize = 17.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Espresso
                     )
 
-                    Text(
-                        text = rupiah,
-                        color = Espresso,
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Bold
+                    Spacer(Modifier.height(16.dp))
+
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        Text(
+                            text = "Jumlah Produk",
+                            fontSize = 13.sp,
+                            color = MutedBrown
+                        )
+
+                        Text(
+                            text = "$totalItems item",
+                            fontSize = 13.sp,
+                            color = Espresso
+                        )
+                    }
+
+                    Spacer(Modifier.height(14.dp))
+
+                    HorizontalDivider(
+                        color = Color(0xFFEDE4DA)
                     )
+
+                    Spacer(Modifier.height(14.dp))
+
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        Text(
+                            text = "Total Harga",
+                            fontSize = 14.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = Espresso
+                        )
+
+                        Text(
+                            text = formatHargaAlamat(totalPrice),
+                            fontSize = 17.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = Espresso
+                        )
+                    }
                 }
             }
 
-            Spacer(modifier = Modifier.height(12.dp))
+            Spacer(Modifier.height(16.dp))
         }
 
-        // Tombol konfirmasi tetap di bawah layar
+        // TOMBOL KONFIRMASI TETAP DI BAWAH
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -309,7 +262,6 @@ fun AlamatScreen(
                     bottom = 12.dp
                 )
         ) {
-
             if (error.isNotEmpty()) {
                 Text(
                     text = error,
@@ -317,40 +269,44 @@ fun AlamatScreen(
                     fontSize = 12.sp
                 )
 
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(Modifier.height(8.dp))
             }
 
             CoffeeButton(
-                text = "Konfirmasi Pesanan  →",
+                text = "Konfirmasi Pesanan →",
                 onClick = {
-                    when {
-                        recipient.isBlank() ||
-                                phone.isBlank() ||
-                                address.isBlank() -> {
-                            error = "Lengkapi semua kolom wajib."
-                        }
+                    val cleanName = recipient.trim()
+                    val cleanPhone = phone.trim()
+                    val cleanAddress = address.trim()
 
-                        phone.length < 10 ||
-                                phone.length > 15 -> {
-                            error = "Nomor HP harus 10–15 digit."
-                        }
+                    error = when {
+                        cleanName.isBlank() ->
+                            "Nama penerima wajib diisi."
 
-                        !phone.startsWith("08") -> {
-                            error = "Nomor HP harus diawali 08."
-                        }
+                        cleanPhone.isBlank() ->
+                            "Nomor HP wajib diisi."
 
-                        totalItems <= 0 -> {
-                            error = "Belum ada produk yang dipilih."
-                        }
+                        !cleanPhone.all { it.isDigit() } ||
+                                !cleanPhone.startsWith("08") ||
+                                cleanPhone.length !in 10..15 ->
+                            "Nomor HP harus 10–15 digit dan diawali 08."
 
-                        else -> {
-                            onConfirm(
-                                recipient.trim(),
-                                phone.trim(),
-                                address.trim(),
-                                notes.trim()
-                            )
-                        }
+                        cleanAddress.isBlank() ->
+                            "Alamat lengkap wajib diisi."
+
+                        totalItems <= 0 ->
+                            "Keranjang masih kosong."
+
+                        else -> ""
+                    }
+
+                    if (error.isEmpty()) {
+                        onConfirm(
+                            cleanName,
+                            cleanPhone,
+                            cleanAddress,
+                            notes.trim()
+                        )
                     }
                 }
             )
@@ -358,8 +314,58 @@ fun AlamatScreen(
     }
 }
 
+// KOMPONEN INPUT ALAMAT
+@Composable
+private fun AlamatInputField(
+    label: String,
+    value: String,
+    onValueChange: (String) -> Unit,
+    placeholder: String,
+    keyboardType: KeyboardType = KeyboardType.Text,
+    singleLine: Boolean = true,
+    minLines: Int = 1
+) {
+    Column(
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Text(
+            text = label,
+            fontSize = 13.sp,
+            fontWeight = FontWeight.SemiBold,
+            color = Espresso
+        )
+
+        Spacer(Modifier.height(7.dp))
+
+        OutlinedTextField(
+            value = value,
+            onValueChange = onValueChange,
+            modifier = Modifier.fillMaxWidth(),
+            placeholder = {
+                Text(
+                    text = placeholder,
+                    fontSize = 13.sp
+                )
+            },
+            singleLine = singleLine,
+            minLines = minLines,
+            keyboardOptions = KeyboardOptions(
+                keyboardType = keyboardType
+            ),
+            shape = RoundedCornerShape(14.dp),
+            colors = OutlinedTextFieldDefaults.colors(
+                focusedBorderColor = Espresso,
+                unfocusedBorderColor = Color(0xFFE6DACE),
+                focusedContainerColor = Color.White,
+                unfocusedContainerColor = Color.White
+            )
+        )
+    }
+}
+
+// PREVIEW
 @Preview(
-    name = "07 - Alamat Pengiriman",
+    name = "Alamat Pengiriman",
     showBackground = true,
     showSystemUi = true
 )
@@ -368,8 +374,8 @@ fun AlamatScreenPreview() {
     MaterialTheme {
         AlamatScreen(
             name = "Naila Aghna",
-            totalItems = 2,
-            totalPrice = 48000,
+            totalItems = 3,
+            totalPrice = 75000,
             onBack = {},
             onConfirm = { _, _, _, _ -> }
         )
