@@ -27,20 +27,34 @@ fun RegisterScreen(
     onLogin: () -> Unit,
     onRegisterSuccess: (String, String, String) -> Unit
 ) {
-    var fullName by remember { mutableStateOf("") }
-    var username by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
-    var errorMessage by remember { mutableStateOf("") }
+    var fullName by remember {
+        mutableStateOf("")
+    }
+
+    var username by remember {
+        mutableStateOf("")
+    }
+
+    var password by remember {
+        mutableStateOf("")
+    }
+
+    var errorMessage by remember {
+        mutableStateOf("")
+    }
 
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(Cream)
+            .statusBarsPadding()
             .verticalScroll(rememberScrollState())
             .padding(horizontal = 26.dp)
     ) {
-        Spacer(modifier = Modifier.height(20.dp))
 
+        Spacer(modifier = Modifier.height(4.dp))
+
+        // Header
         AuthHeader(
             title = "Buat Akun Baru",
             subtitle = "Isi data berikut untuk bergabung dan " +
@@ -50,6 +64,7 @@ fun RegisterScreen(
 
         Spacer(modifier = Modifier.height(30.dp))
 
+        // Nama lengkap
         CoffeeTextField(
             label = "Nama Lengkap",
             placeholder = "Masukkan nama lengkap",
@@ -62,6 +77,7 @@ fun RegisterScreen(
 
         Spacer(modifier = Modifier.height(20.dp))
 
+        // Username
         CoffeeTextField(
             label = "Username",
             placeholder = "Buat username",
@@ -74,6 +90,7 @@ fun RegisterScreen(
 
         Spacer(modifier = Modifier.height(20.dp))
 
+        // Password
         CoffeeTextField(
             label = "Password",
             placeholder = "Buat password minimal 6 karakter",
@@ -85,6 +102,7 @@ fun RegisterScreen(
             isPassword = true
         )
 
+        // Pesan validasi
         if (errorMessage.isNotEmpty()) {
             Spacer(modifier = Modifier.height(12.dp))
 
@@ -97,6 +115,7 @@ fun RegisterScreen(
 
         Spacer(modifier = Modifier.height(30.dp))
 
+        // Tombol daftar
         CoffeeButton(
             text = "Daftar Sekarang  →",
             onClick = {
@@ -124,6 +143,7 @@ fun RegisterScreen(
 
         Spacer(modifier = Modifier.height(20.dp))
 
+        // Masuk ke akun
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.Center,

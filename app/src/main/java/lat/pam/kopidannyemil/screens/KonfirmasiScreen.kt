@@ -19,7 +19,7 @@ import lat.pam.kopidannyemil.components.CoffeeButton
 import lat.pam.kopidannyemil.design.*
 
 // ========================================
-// 08 - KONFIRMASI PESANAN
+// KONFIRMASI PESANAN
 // ========================================
 
 @Composable
@@ -161,9 +161,7 @@ fun KonfirmasiScreen(
     }
 }
 
-// ========================================
 // KOMPONEN DETAIL PESANAN
-// ========================================
 
 @Composable
 private fun DetailRow(
@@ -196,9 +194,7 @@ private fun DetailRow(
     }
 }
 
-// ========================================
 // PREVIEW KONFIRMASI
-// ========================================
 
 @Preview(
     name = "08 - Konfirmasi Pesanan",

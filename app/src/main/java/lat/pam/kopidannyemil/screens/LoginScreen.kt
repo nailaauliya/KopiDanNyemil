@@ -29,19 +29,30 @@ fun LoginScreen(
     onRegister: () -> Unit,
     onLoginSuccess: () -> Unit
 ) {
-    var username by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
-    var errorMessage by remember { mutableStateOf("") }
+    var username by remember {
+        mutableStateOf("")
+    }
+
+    var password by remember {
+        mutableStateOf("")
+    }
+
+    var errorMessage by remember {
+        mutableStateOf("")
+    }
 
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(Cream)
+            .statusBarsPadding()
             .verticalScroll(rememberScrollState())
             .padding(horizontal = 26.dp)
     ) {
-        Spacer(modifier = Modifier.height(20.dp))
 
+        Spacer(modifier = Modifier.height(4.dp))
+
+        // Header
         AuthHeader(
             title = "Masuk ke\nAkunmu",
             subtitle = "Selamat datang kembali! Masuk untuk " +
@@ -51,6 +62,7 @@ fun LoginScreen(
 
         Spacer(modifier = Modifier.height(38.dp))
 
+        // Username
         CoffeeTextField(
             label = "Username",
             placeholder = "Masukkan username",
@@ -63,6 +75,7 @@ fun LoginScreen(
 
         Spacer(modifier = Modifier.height(22.dp))
 
+        // Password
         CoffeeTextField(
             label = "Password",
             placeholder = "Masukkan password",
@@ -74,6 +87,7 @@ fun LoginScreen(
             isPassword = true
         )
 
+        // Pesan validasi
         if (errorMessage.isNotEmpty()) {
             Spacer(modifier = Modifier.height(12.dp))
 
@@ -86,6 +100,7 @@ fun LoginScreen(
 
         Spacer(modifier = Modifier.height(34.dp))
 
+        // Tombol login
         CoffeeButton(
             text = "Masuk  →",
             onClick = {
@@ -112,6 +127,7 @@ fun LoginScreen(
 
         Spacer(modifier = Modifier.height(25.dp))
 
+        // Pendaftaran akun
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.Center,

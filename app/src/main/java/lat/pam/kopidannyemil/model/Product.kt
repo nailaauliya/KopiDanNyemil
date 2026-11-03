@@ -13,7 +13,8 @@ data class Product(
 
 val dummyProducts = listOf(
 
-    // KATEGORI KOPI
+    // Kategori Kopi
+
     Product(
         id = 1,
         name = "Kopi Susu Gula Aren",
@@ -50,7 +51,26 @@ val dummyProducts = listOf(
         description = "Espresso dengan kesegaran jeruk"
     ),
 
-    // KATEGORI NON KOPI
+    Product(
+        id = 14,
+        name = "Caramel Frappuccino",
+        category = "Kopi",
+        price = 32000,
+        image = R.drawable.caramel_frappucino,
+        description = "Kopi blended dengan susu, es, dan karamel"
+    ),
+
+    Product(
+        id = 16,
+        name = "Avocado Coffee",
+        category = "Kopi",
+        price = 30000,
+        image = R.drawable.avocado_coffee,
+        description = "Perpaduan alpukat, espresso, dan susu"
+    ),
+
+    // Kategori Non Kopi
+
     Product(
         id = 5,
         name = "Matcha Latte",
@@ -69,7 +89,44 @@ val dummyProducts = listOf(
         description = "Minuman segar dengan campuran buah"
     ),
 
-    // KATEGORI CAMILAN
+    Product(
+        id = 13,
+        name = "Hot Choco",
+        category = "Non Kopi",
+        price = 25000,
+        image = R.drawable.hot_choco,
+        description = "Minuman cokelat hangat dengan susu"
+    ),
+
+    Product(
+        id = 15,
+        name = "Cookies n Cream Frappe",
+        category = "Non Kopi",
+        price = 30000,
+        image = R.drawable.cookies_cream,
+        description = "Minuman blended dengan cookies dan krim"
+    ),
+
+    Product(
+        id = 17,
+        name = "Red Velvet Milkshake",
+        category = "Non Kopi",
+        price = 30000,
+        image = R.drawable.redvelvet_milkshake,
+        description = "Milkshake red velvet yang creamy dan lembut"
+    ),
+
+    Product(
+        id = 18,
+        name = "Mango Pomelo",
+        category = "Non Kopi",
+        price = 29000,
+        image = R.drawable.mango_pomelo,
+        description = "Minuman mangga segar dengan pomelo"
+    ),
+
+    // Kategori Camilan
+
     Product(
         id = 7,
         name = "Donat Cokelat",
@@ -123,5 +180,4 @@ val dummyProducts = listOf(
         image = R.drawable.cireng,
         description = "Cireng renyah dengan sambal rujak"
     )
-
 )
