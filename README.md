@@ -17,34 +17,36 @@
 
 Aplikasi ini dibuat untuk memenuhi tugas Ujian Tengah Semester (UTS) mata kuliah Pengembangan Aplikasi Mobile dengan mengimplementasikan wireframe yang telah diberikan.
 
-Melalui aplikasi ini, pengguna dapat melakukan registrasi dan login, melihat daftar menu, mencari produk, memilih jumlah pesanan, mengelola keranjang, mengisi alamat pengiriman, hingga melakukan konfirmasi pesanan.
+Melalui aplikasi ini, pengguna dapat melakukan registrasi dan login, melihat daftar menu, mencari produk, memilih jumlah pesanan, mengelola keranjang, mengisi alamat pengiriman, melakukan konfirmasi pesanan, serta melihat riwayat transaksi yang telah dilakukan.
 
-Aplikasi menyediakan **18 produk** yang terbagi menjadi tiga kategori, yaitu **Kopi, Non Kopi, dan Camilan**. Seluruh data produk masih menggunakan data statis (*dummy data*) tanpa database.
+Aplikasi menyediakan **18 produk** dalam tiga kategori, yaitu **Kopi, Non Kopi, dan Camilan**. Data produk menggunakan data statis (*dummy data*), sehingga aplikasi dapat digunakan tanpa database atau backend.
 
 ## 2. Fitur Aplikasi
 
-Aplikasi Kopi dan Nyemil memiliki beberapa fitur utama yang mendukung proses pemesanan makanan dan minuman.
+Aplikasi Kopi dan Nyemil dilengkapi dengan fitur-fitur yang mendukung proses pemesanan makanan dan minuman, mulai dari pengelolaan akun hingga pencatatan riwayat pesanan.
 
 | No. | Fitur | Keterangan |
 |---|---|---|
-| 1 | Welcome | Halaman pembuka yang menampilkan identitas aplikasi sebelum pengguna melanjutkan ke halaman berikutnya. |
-| 2 | Sign Up | Menyediakan pilihan untuk masuk menggunakan akun yang sudah ada atau melakukan pendaftaran akun baru. |
-| 3 | Register | Memungkinkan pengguna membuat akun dengan mengisi informasi nama, username, dan password. |
-| 4 | Login | Memvalidasi username dan password yang telah didaftarkan sebelum pengguna dapat masuk ke halaman utama. |
-| 5 | Home | Menampilkan 18 pilihan kopi, minuman non-kopi, dan camilan yang dilengkapi gambar, nama, deskripsi, serta harga. |
-| 6 | Pencarian Menu | Memudahkan pengguna menemukan produk melalui pencarian berdasarkan nama atau deskripsi. |
-| 7 | Filter Kategori | Menampilkan produk berdasarkan kategori Semua, Kopi, Non Kopi, dan Camilan. |
-| 8 | Pemilihan Produk | Pengguna dapat menambah atau mengurangi jumlah produk melalui tombol (+) dan (-). |
-| 9 | Keranjang | Menampilkan produk yang dipilih, jumlah pesanan, dan total harga yang diperbarui secara otomatis. |
-| 10 | Alamat Pengiriman | Menyediakan formulir nama penerima, nomor handphone, alamat lengkap, dan catatan tambahan. |
-| 11 | Konfirmasi Pesanan | Menampilkan ringkasan pesanan yang telah dikonfirmasi, termasuk nama penerima, jumlah produk, dan total harga. |
-| 12 | Profile | Menampilkan informasi akun serta menyediakan fitur mengubah nama, memilih foto profil, dan logout. |
+| 1 | Welcome | Halaman pembuka yang menampilkan identitas dan pengenalan singkat aplikasi. |
+| 2 | Sign Up | Menyediakan pilihan untuk masuk atau melakukan pendaftaran akun baru. |
+| 3 | Register | Memungkinkan pengguna mendaftarkan akun dengan nama lengkap, username, dan password. |
+| 4 | Login | Memvalidasi username dan password sebelum pengguna masuk ke halaman utama. |
+| 5 | Home | Menampilkan 18 produk lengkap dengan foto, nama, deskripsi, dan harga. |
+| 6 | Pencarian Menu | Memungkinkan pengguna mencari produk berdasarkan nama atau deskripsi. |
+| 7 | Filter Kategori | Menyaring produk berdasarkan kategori Semua, Kopi, Non Kopi, dan Camilan. |
+| 8 | Pemilihan Produk | Menambah atau mengurangi jumlah produk melalui tombol (+) dan (-). |
+| 9 | Keranjang | Menampilkan produk yang dipilih, jumlah item, dan total harga yang dihitung otomatis. |
+| 10 | Riwayat Pesanan | Menampilkan transaksi yang sudah dikonfirmasi beserta produk, jumlah, penerima, dan total harga. |
+| 11 | Alamat Pengiriman | Menyediakan formulir nama penerima, nomor HP, alamat lengkap, dan catatan tambahan dengan validasi input. |
+| 12 | Konfirmasi Pesanan | Menampilkan pemberitahuan keberhasilan pesanan beserta ringkasan transaksi. |
+| 13 | Profile | Menampilkan dan memperbarui nama lengkap, email, nomor HP, serta foto profil dari galeri. |
+| 14 | Logout | Memungkinkan pengguna keluar dari akun dan kembali ke halaman awal autentikasi. |
 
-Aplikasi juga dilengkapi dengan **bottom navigation** untuk memudahkan perpindahan dari halaman Home ke Keranjang dan Profile.
+Aplikasi menggunakan **bottom navigation Home, Pesanan, dan Profil**. Pada menu Pesanan terdapat dua tab, yaitu Keranjang dan Riwayat Pesanan, sehingga pengguna dapat mengakses pesanan aktif maupun transaksi sebelumnya dalam satu halaman.
 
 ## 3. Daftar Menu
 
-Terdapat **18 produk** yang tersedia, terdiri dari **6 menu Kopi, 6 menu Non Kopi, dan 6 menu Camilan**.
+Terdapat **18 produk**, yang terdiri dari **6 menu Kopi, 6 menu Non Kopi, dan 6 menu Camilan**.
 
 | Kategori | Nama Produk | Harga |
 |---|---|---|
@@ -67,28 +69,30 @@ Terdapat **18 produk** yang tersedia, terdiri dari **6 menu Kopi, 6 menu Non Kop
 | | Dimsum | Rp20.000 |
 | | Cireng | Rp15.000 |
 
-Setiap produk ditampilkan dengan foto, deskripsi singkat, harga, serta tombol untuk mengatur jumlah pesanan.
+Setiap produk ditampilkan dengan gambar, deskripsi singkat, harga, dan tombol untuk mengatur jumlah pesanan. Pengguna dapat memilih beberapa produk sekaligus sebelum melanjutkan ke proses checkout.
 
 ## 4. Teknologi yang Digunakan
 
 | No. | Teknologi | Keterangan |
 |---|---|---|
 | 1 | Kotlin | Bahasa pemrograman utama untuk pengembangan aplikasi Android. |
-| 2 | Jetpack Compose | Framework untuk membangun antarmuka aplikasi secara deklaratif. |
-| 3 | Material Design 3 | Menyediakan komponen UI seperti tombol, kartu produk, dan kolom input. |
-| 4 | Material Icons | Digunakan untuk ikon pencarian serta navigasi Home, Keranjang, dan Profil. |
-| 5 | Android Studio | IDE untuk menulis kode, membangun, dan menguji aplikasi. |
-| 6 | Gradle | Mengelola dependency dan proses build aplikasi. |
-| 7 | Android SDK | Mendukung pengembangan aplikasi dengan minimum API 35 (Android 15). |
-| 8 | Git & GitHub | Digunakan untuk version control, penyimpanan source code, dan dokumentasi project. |
+| 2 | Jetpack Compose | Framework deklaratif untuk membangun antarmuka aplikasi. |
+| 3 | Material Design 3 | Menyediakan komponen UI seperti tombol, kartu, tab, dan formulir. |
+| 4 | Material Icons | Digunakan untuk ikon navigasi, pencarian, kamera, dan riwayat pesanan. |
+| 5 | Compose State | Mengelola data sementara seperti akun, keranjang, jumlah produk, dan riwayat pesanan. |
+| 6 | SharedPreferences | Menyimpan informasi tambahan Profile, seperti email dan nomor HP, secara lokal. |
+| 7 | Android Studio | IDE untuk pengembangan, pengujian, dan menjalankan aplikasi. |
+| 8 | Gradle | Mengelola dependency dan proses build aplikasi. |
+| 9 | Android SDK | Mendukung pengembangan dan pengujian aplikasi pada perangkat Android. |
+| 10 | Git & GitHub | Digunakan untuk version control, penyimpanan source code, dan dokumentasi project. |
 
 ## 5. Dokumentasi Tampilan Aplikasi
 
-Berikut merupakan hasil implementasi antarmuka aplikasi Kopi dan Nyemil berdasarkan wireframe yang telah dikembangkan.
+Berikut merupakan hasil implementasi tampilan aplikasi Kopi dan Nyemil berdasarkan wireframe yang telah dikembangkan dengan desain bernuansa cokelat dan cream.
 
 ### 5.1 Welcome, Sign Up, Login, dan Register
 
-Halaman awal aplikasi digunakan untuk memulai, membuat akun baru, dan login sebelum masuk ke halaman utama.
+Halaman awal digunakan untuk memperkenalkan aplikasi serta menyediakan proses registrasi dan login sebelum pengguna mengakses menu utama.
 
 <table>
   <tr>
@@ -107,7 +111,9 @@ Halaman awal aplikasi digunakan untuk memulai, membuat akun baru, dan login sebe
 
 ### 5.2 Home
 
-Halaman Home menampilkan daftar produk yang tersedia, lengkap dengan gambar, deskripsi, harga, dan tombol pemilihan jumlah produk. Menu disusun berdasarkan kategori agar lebih mudah ditemukan.
+Halaman Home menampilkan 18 produk yang tersedia, lengkap dengan gambar, deskripsi, harga, dan tombol tambah-kurang jumlah pesanan.
+
+Produk dapat ditampilkan berdasarkan kategori Kopi, Non Kopi, dan Camilan.
 
 <table>
   <tr>
@@ -126,7 +132,7 @@ Halaman Home menampilkan daftar produk yang tersedia, lengkap dengan gambar, des
 
 ### 5.3 Pencarian dan Pemilihan Menu
 
-Fitur pencarian memungkinkan pengguna menemukan produk berdasarkan nama atau deskripsi. Pengguna juga dapat menggunakan filter kategori serta menambah atau mengurangi jumlah produk yang ingin dipesan.
+Fitur pencarian digunakan untuk menemukan produk berdasarkan nama atau deskripsi. Pengguna juga dapat memilih jumlah produk yang akan dimasukkan ke keranjang.
 
 <table>
   <tr>
@@ -141,14 +147,14 @@ Fitur pencarian memungkinkan pengguna menemukan produk berdasarkan nama atau des
 
 ### 5.4 Keranjang Pesanan
 
-Halaman Keranjang digunakan untuk melihat produk yang telah dipilih, mengatur jumlah pesanan, dan memeriksa total harga sebelum melanjutkan ke proses checkout.
+Pada halaman Pesanan Saya, pengguna dapat membuka tab Keranjang untuk melihat produk yang telah dipilih, mengubah jumlah pembelian, dan memeriksa total harga sebelum melanjutkan ke alamat pengiriman.
 
-Jika belum ada produk yang dipilih, aplikasi akan menampilkan informasi bahwa keranjang masih kosong.
+Jika belum memilih produk, aplikasi menampilkan informasi bahwa keranjang masih kosong.
 
 <table>
   <tr>
     <th align="center">Keranjang Kosong</th>
-    <th align="center">Keranjang Pesanan</th>
+    <th align="center">Keranjang Berisi</th>
   </tr>
   <tr>
     <td align="center"><img src="screenshots/08-keranjangkosong.png" width="230"></td>
@@ -158,7 +164,9 @@ Jika belum ada produk yang dipilih, aplikasi akan menampilkan informasi bahwa ke
 
 ### 5.5 Alamat Pengiriman
 
-Pengguna mengisi informasi penerima, nomor handphone, alamat lengkap, dan catatan tambahan sebelum mengonfirmasi pesanan. Halaman ini juga menampilkan ringkasan jumlah produk dan total harga.
+Pengguna mengisi nama penerima, nomor HP, alamat lengkap, dan catatan tambahan sebelum mengonfirmasi pesanan.
+
+Halaman ini juga menampilkan ringkasan jumlah produk dan total harga. Data wajib divalidasi sebelum pesanan diproses.
 
 <p align="center">
   <img src="screenshots/11-alamat.png" width="230">
@@ -166,15 +174,36 @@ Pengguna mengisi informasi penerima, nomor handphone, alamat lengkap, dan catata
 
 ### 5.6 Konfirmasi Pesanan
 
-Setelah pengguna menyelesaikan proses pemesanan, aplikasi menampilkan halaman konfirmasi yang berisi nama penerima, jumlah produk, dan total harga pesanan.
+Setelah proses pemesanan selesai, aplikasi menampilkan halaman konfirmasi dengan tanda berhasil, nama penerima, jumlah produk, dan total harga.
+
+Pesanan yang telah dikonfirmasi juga akan masuk ke Riwayat Pesanan.
 
 <p align="center">
   <img src="screenshots/12-konfirmasi.png" width="230">
 </p>
 
-### 5.7 Profile
+### 5.7 Riwayat Pesanan
 
-Halaman Profile digunakan untuk melihat informasi akun, memperbarui nama, memilih foto profil dari galeri perangkat, dan melakukan logout.
+Menu **Pesanan Saya** memiliki tab Riwayat Pesanan untuk menampilkan transaksi yang sebelumnya telah berhasil dikonfirmasi.
+
+Setiap riwayat memuat nomor pesanan, nama penerima, daftar produk, jumlah item, dan total harga. Apabila belum ada transaksi, aplikasi menampilkan halaman riwayat kosong.
+
+<table>
+  <tr>
+    <th align="center">Riwayat Kosong</th>
+    <th align="center">Riwayat Pesanan</th>
+  </tr>
+  <tr>
+    <td align="center"><img src="screenshots/13-pesanankosong.png" width="230"></td>
+    <td align="center"><img src="screenshots/13-pesanan.png" width="230"></td>
+  </tr>
+</table>
+
+### 5.8 Profile
+
+Halaman Profile digunakan untuk melihat dan memperbarui informasi pribadi, meliputi nama lengkap, email, nomor HP, dan foto profil yang dapat dipilih dari galeri perangkat.
+
+Username ditampilkan sebagai identitas akun dan tidak dapat diubah. Pengguna juga dapat keluar dari akun melalui tombol logout.
 
 <p align="center">
   <img src="screenshots/10-profile.png" width="230">
@@ -184,14 +213,16 @@ Halaman Profile digunakan untuk melihat informasi akun, memperbarui nama, memili
 
 1. Pengguna membuka aplikasi melalui halaman Welcome.
 2. Memilih Login atau Register untuk mengakses aplikasi.
-3. Setelah login, pengguna diarahkan ke halaman Home.
-4. Pengguna mencari atau memilih produk serta menentukan jumlah pesanan.
-5. Produk yang dipilih akan ditampilkan pada halaman Keranjang.
-6. Pengguna memeriksa pesanan dan mengisi informasi Alamat Pengiriman.
-7. Setelah data lengkap, pengguna melakukan konfirmasi pesanan.
-8. Aplikasi menampilkan halaman Konfirmasi Pesanan dan pengguna dapat kembali ke Home.
-
-Selain melakukan pemesanan, pengguna dapat mengakses halaman Profile untuk mengelola informasi akun.
+3. Setelah login berhasil, pengguna diarahkan ke halaman Home.
+4. Pengguna mencari produk atau memilih menu berdasarkan kategori.
+5. Pengguna menentukan jumlah produk melalui tombol tambah (+) dan kurang (-).
+6. Produk yang dipilih masuk ke menu Pesanan pada tab Keranjang.
+7. Pengguna memeriksa produk, jumlah item, dan total harga.
+8. Pengguna melanjutkan ke halaman Alamat Pengiriman dan melengkapi data penerima.
+9. Setelah data valid, pengguna melakukan konfirmasi pesanan.
+10. Aplikasi menampilkan halaman Konfirmasi Pesanan dengan ringkasan transaksi.
+11. Pengguna kembali ke Home dan dapat membuka Pesanan → Riwayat Pesanan untuk melihat transaksi yang telah dikonfirmasi.
+12. Pengguna dapat membuka Profile untuk memperbarui informasi pribadi, mengganti foto, atau logout.
 
 ## 7. Cara Menjalankan Aplikasi
 
@@ -203,15 +234,19 @@ Selain melakukan pemesanan, pengguna dapat mengakses halaman Profile untuk menge
 
 2. Buka folder `KopiDanNyemil` menggunakan **Android Studio**.
 3. Tunggu proses **Gradle Sync** hingga selesai.
-4. Jalankan emulator atau perangkat Android dengan **API 35 atau lebih tinggi**.
-5. Pilih konfigurasi `app`, kemudian klik **Run**.
-6. Lakukan registrasi dan login untuk mencoba fitur aplikasi.
+4. Siapkan emulator Android atau perangkat Android yang kompatibel.
+5. Pilih konfigurasi `app`, kemudian klik tombol **Run**.
+6. Setelah aplikasi terbuka, lakukan registrasi dan login untuk mencoba fitur pemesanan.
 
 ## 8. Catatan Pengembangan
 
-Kopi dan Nyemil merupakan aplikasi prototype yang dikembangkan untuk memenuhi tugas UTS Pengembangan Aplikasi Mobile.
+Kopi dan Nyemil merupakan aplikasi prototype yang dikembangkan untuk memenuhi tugas UTS mata kuliah Pengembangan Aplikasi Mobile.
 
-Data produk menggunakan *dummy data*, sedangkan informasi akun dan keranjang dikelola sementara melalui state aplikasi. Aplikasi belum terhubung dengan database, backend, sistem pembayaran, maupun layanan pengiriman sebenarnya.
+Seluruh produk menggunakan *dummy data*. Informasi akun, keranjang, dan riwayat pesanan dikelola menggunakan state aplikasi, sedangkan email dan nomor HP pada Profile dapat disimpan secara lokal melalui SharedPreferences.
+
+Riwayat pesanan belum menggunakan penyimpanan permanen sehingga dapat hilang ketika sesi aplikasi berakhir atau setelah logout.
+
+Aplikasi belum terhubung dengan database server, backend, sistem pembayaran, maupun layanan pengiriman sebenarnya. Proses pemesanan dan konfirmasi merupakan simulasi untuk kebutuhan pembelajaran.
 
 ---
 

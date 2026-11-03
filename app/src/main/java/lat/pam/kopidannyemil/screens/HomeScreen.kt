@@ -9,14 +9,12 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.ReceiptLong
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.*
-
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -31,7 +29,6 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-
 import lat.pam.kopidannyemil.R
 import lat.pam.kopidannyemil.design.*
 import lat.pam.kopidannyemil.model.Product
@@ -92,7 +89,7 @@ fun HomeScreen(
             .background(Cream)
     ) {
 
-        // Header
+        // HEADER HOME
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -150,10 +147,12 @@ fun HomeScreen(
             }
         }
 
-        // Pencarian
+        // KOLOM PENCARIAN
         OutlinedTextField(
             value = search,
-            onValueChange = { search = it },
+            onValueChange = {
+                search = it
+            },
             placeholder = {
                 Text(
                     text = "Cari menu favoritmu...",
@@ -182,7 +181,7 @@ fun HomeScreen(
 
         Spacer(Modifier.height(18.dp))
 
-        // Banner
+        // BANNER KOPI
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -191,7 +190,9 @@ fun HomeScreen(
                 .clip(RoundedCornerShape(20.dp))
         ) {
             Image(
-                painter = painterResource(R.drawable.coffee_signup),
+                painter = painterResource(
+                    R.drawable.coffee_signup
+                ),
                 contentDescription = "Banner Kopi dan Nyemil",
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.fillMaxSize()
@@ -246,7 +247,7 @@ fun HomeScreen(
 
         Spacer(Modifier.height(20.dp))
 
-        // Kategori menu
+        // FILTER KATEGORI
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -261,8 +262,11 @@ fun HomeScreen(
                         .weight(1f)
                         .clip(RoundedCornerShape(12.dp))
                         .background(
-                            if (selected) Espresso
-                            else Color(0xFFF0E8DE)
+                            if (selected) {
+                                Espresso
+                            } else {
+                                Color(0xFFF0E8DE)
+                            }
                         )
                         .clickable {
                             selectedCategory = category
@@ -274,8 +278,11 @@ fun HomeScreen(
                         text = category,
                         fontSize = 11.sp,
                         fontWeight = FontWeight.Medium,
-                        color = if (selected) Color.White
-                        else Espresso,
+                        color = if (selected) {
+                            Color.White
+                        } else {
+                            Espresso
+                        },
                         maxLines = 1
                     )
                 }
@@ -284,7 +291,7 @@ fun HomeScreen(
 
         Spacer(Modifier.height(22.dp))
 
-        // Judul daftar menu
+        // JUDUL DAFTAR PRODUK
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -308,7 +315,7 @@ fun HomeScreen(
 
         Spacer(Modifier.height(14.dp))
 
-        // Daftar produk
+        // DAFTAR PRODUK
         if (filteredProducts.isEmpty()) {
             Box(
                 modifier = Modifier
@@ -338,14 +345,19 @@ fun HomeScreen(
                     CoffeeProductCard(
                         product = product,
                         quantity = quantities[product.id] ?: 0,
-                        onAdd = { onAdd(product.id) },
-                        onRemove = { onRemove(product.id) }
+                        onAdd = {
+                            onAdd(product.id)
+                        },
+                        onRemove = {
+                            onRemove(product.id)
+                        }
                     )
                 }
             }
         }
 
-        // Ringkasan keranjang
+        // RINGKASAN KERANJANG
+        // TETAP DITAMPILKAN JIKA ADA PRODUK DIPILIH
         if (totalItems > 0) {
             Column(
                 modifier = Modifier
@@ -393,7 +405,7 @@ fun HomeScreen(
             }
         }
 
-        // Bottom navigation
+        // BOTTOM NAVIGATION
         HorizontalDivider(
             color = Color(0xFFEDE5DB)
         )
@@ -402,6 +414,7 @@ fun HomeScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .background(Color.White)
+                .navigationBarsPadding()
                 .padding(
                     horizontal = 24.dp,
                     vertical = 10.dp
@@ -416,9 +429,10 @@ fun HomeScreen(
                 onClick = {}
             )
 
+            // MENU TENGAH DIGANTI MENJADI PESANAN
             CoffeeNavItem(
-                icon = Icons.Filled.ShoppingCart,
-                label = "Keranjang",
+                icon = Icons.Filled.ReceiptLong,
+                label = "Pesanan",
                 selected = false,
                 onClick = onOrder
             )
@@ -433,7 +447,7 @@ fun HomeScreen(
     }
 }
 
-// Kartu produk
+// KARTU PRODUK
 @Composable
 private fun CoffeeProductCard(
     product: Product,
@@ -559,7 +573,7 @@ private fun CoffeeProductCard(
     }
 }
 
-// Item bottom navigation
+// ITEM BOTTOM NAVIGATION
 @Composable
 private fun CoffeeNavItem(
     icon: ImageVector,
@@ -600,6 +614,7 @@ private fun CoffeeNavItem(
     }
 }
 
+// PREVIEW HOME
 @Preview(
     name = "05 - Home",
     showBackground = true,

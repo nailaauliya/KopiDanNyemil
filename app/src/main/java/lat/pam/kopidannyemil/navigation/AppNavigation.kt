@@ -31,12 +31,12 @@ fun AppNavigation() {
         mutableStateOf("")
     }
 
-    // FOTO PROFIL PENGGUNA
+    // FOTO PROFIL
     var profilePhotoUri by remember {
         mutableStateOf<Uri?>(null)
     }
 
-    // KERANJANG BELANJA
+    // DATA KERANJANG
     val quantities = remember {
         mutableStateMapOf<Int, Int>()
     }
@@ -47,24 +47,18 @@ fun AppNavigation() {
         product.price * (quantities[product.id] ?: 0)
     }
 
+    // RIWAYAT PESANAN
+    val riwayatPesanan = remember {
+        mutableStateListOf<RiwayatPesanan>()
+    }
+
     // DATA PENGIRIMAN
-    var recipient by remember {
-        mutableStateOf("")
-    }
+    var recipient by remember { mutableStateOf("") }
+    var phone by remember { mutableStateOf("") }
+    var address by remember { mutableStateOf("") }
+    var notes by remember { mutableStateOf("") }
 
-    var phone by remember {
-        mutableStateOf("")
-    }
-
-    var address by remember {
-        mutableStateOf("")
-    }
-
-    var notes by remember {
-        mutableStateOf("")
-    }
-
-    // DATA PESANAN FINAL
+    // DATA KONFIRMASI
     var confirmedItems by remember {
         mutableIntStateOf(0)
     }
@@ -73,13 +67,13 @@ fun AppNavigation() {
         mutableIntStateOf(0)
     }
 
-    // FUNGSI TAMBAH PRODUK
+    // TAMBAH PRODUK
     val addProduct: (Int) -> Unit = { productId ->
         quantities[productId] =
             (quantities[productId] ?: 0) + 1
     }
 
-    // FUNGSI KURANG PRODUK
+    // KURANG PRODUK
     val removeProduct: (Int) -> Unit = { productId ->
         val current = quantities[productId] ?: 0
 
@@ -95,25 +89,24 @@ fun AppNavigation() {
         currentScreen = when (currentScreen) {
             "signup" -> "welcome"
             "login", "register" -> "signup"
-            "home" -> "home"
             "profile", "cart" -> "home"
             "order" -> "cart"
             "confirmation" -> "confirmation"
+            "home" -> "home"
             else -> "welcome"
         }
     }
 
-    // NAVIGASI HALAMAN
     when (currentScreen) {
 
-        // 01 - WELCOME
+        // WELCOME
         "welcome" -> WelcomeScreen(
             onStart = {
                 currentScreen = "signup"
             }
         )
 
-        // 02 - SIGN UP
+        // SIGN UP
         "signup" -> SignUpScreen(
             onBack = {
                 currentScreen = "welcome"
@@ -126,7 +119,7 @@ fun AppNavigation() {
             }
         )
 
-        // 03 - LOGIN
+        // LOGIN
         "login" -> LoginScreen(
             registeredUsername = registeredUsername,
             registeredPassword = registeredPassword,
@@ -142,7 +135,7 @@ fun AppNavigation() {
             }
         )
 
-        // 04 - REGISTER
+        // REGISTER
         "register" -> RegisterScreen(
             onBack = {
                 currentScreen = "signup"
@@ -159,7 +152,7 @@ fun AppNavigation() {
             }
         )
 
-        // 05 - HOME
+        // HOME
         "home" -> HomeScreen(
             name = loggedInName,
             quantities = quantities,
@@ -173,7 +166,7 @@ fun AppNavigation() {
             }
         )
 
-        // 06 - PROFILE
+        // PROFILE
         "profile" -> ProfileScreen(
             name = loggedInName,
             username = registeredUsername,
@@ -192,13 +185,15 @@ fun AppNavigation() {
                 loggedInName = ""
                 quantities.clear()
                 profilePhotoUri = null
+                riwayatPesanan.clear()
                 currentScreen = "signup"
             }
         )
 
-        // 07 - KERANJANG
-        "cart" -> KeranjangScreen(
+        // PESANAN: KERANJANG + RIWAYAT
+        "cart" -> PesananScreen(
             quantities = quantities,
+            riwayat = riwayatPesanan,
             onAdd = addProduct,
             onRemove = removeProduct,
             onBack = {
@@ -211,7 +206,7 @@ fun AppNavigation() {
             }
         )
 
-        // 08 - ALAMAT PENGIRIMAN
+        // ALAMAT PENGIRIMAN
         "order" -> AlamatScreen(
             name = loggedInName,
             totalItems = totalItems,
@@ -223,17 +218,45 @@ fun AppNavigation() {
                           newPhone,
                           newAddress,
                           newNotes ->
+
                 recipient = newRecipient
                 phone = newPhone
                 address = newAddress
                 notes = newNotes
+
                 confirmedItems = totalItems
                 confirmedPrice = totalPrice
+
+                val produkDipesan = dummyProducts.mapNotNull { product ->
+                    val jumlah = quantities[product.id] ?: 0
+
+                    if (jumlah > 0) {
+                        ItemRiwayat(
+                            nama = product.name,
+                            jumlah = jumlah,
+                            harga = product.price
+                        )
+                    } else {
+                        null
+                    }
+                }
+
+                if (produkDipesan.isNotEmpty()) {
+                    riwayatPesanan.add(
+                        RiwayatPesanan(
+                            nomor = riwayatPesanan.size + 1,
+                            penerima = newRecipient,
+                            produk = produkDipesan,
+                            totalHarga = confirmedPrice
+                        )
+                    )
+                }
+
                 currentScreen = "confirmation"
             }
         )
 
-        // 09 - KONFIRMASI
+        // KONFIRMASI PESANAN
         "confirmation" -> KonfirmasiScreen(
             recipient = recipient,
             totalItems = confirmedItems,
